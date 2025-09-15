@@ -1,0 +1,217 @@
+$app-bg: #212426;;
+$card-bg: #1e1e1e;
+$text-color: #fff;
+$accent: #f9d3b4;
+
+// 📱 Media Query Breakpoints
+$mobile: 480px;   // Small screens
+$tablet: 768px;   // Tablets
+$laptop: 1200px;  // Laptops
+$desktop: 1201px; // Large desktops
+
+body{
+    font-family: "Roboto", sans-serif;
+    padding: auto;
+    color: $app-bg;
+    background-color: $app-bg;
+}
+
+.app {
+  padding: 50px;
+}
+
+h1 {
+   font-family: "Roboto Slab", serif;
+    font-weight: 400;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(90deg, #f9d3b4, hsla(27, 85%, 84%, 0));
+    -webkit-background-clip: text;
+    background-clip: text;
+    letter-spacing: .9px;
+    font-size: 3rem;
+    width: fit-content;
+     margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+    
+  }
+  
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4rem auto 5rem;
+  width: 100%;
+  max-width: 800px;
+  background: #1c1d1f;
+  border-radius: 45px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+  margin: 4rem auto 4rem; // bottom margin gives space below the search bar
+
+
+  input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px 20px; // space inside input
+
+    &::placeholder {
+      color: #888;       // lighter placeholder
+      font-size: 18px;
+      opacity: 0.8;
+    }
+  }
+
+  .sea {
+    background: transparent;
+    border: none;
+    width: 25px;
+    font-size: 10px;
+    cursor: pointer;
+    margin-left: -40px; // overlap button on right side
+  }
+}
+
+
+.movie-container{
+    margin-top: 2rem;
+    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-items: center;
+    justify-content: space-evenly;
+}
+
+.movie-card {
+  background: $card-bg;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  width: 310px;        // ✅ fixed width
+  height: 440px; 
+
+  &:hover {
+    transform: scale(1.05);
+
+    .movie-info {
+      background: transparent; // remove background on hover
+    }
+
+     img {
+      filter: brightness(0.3); // dark overlay effect
+    }
+
+    data {
+      opacity: 1; // show date on hover
+    }
+  }
+
+img{
+    display: block;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease;
+}
+
+data {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: $text-color;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    opacity: 0; // hidden by default
+    transition: opacity 0.3s ease;
+ }
+
+  .movie-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background: #363636; // visible by default
+    transition: background 0.3s ease;
+
+    h3 {
+      font-family: "Raleway", sans-serif;
+      letter-spacing: .9px;
+      font-weight: 400;
+      font-size: 12px;
+    
+      margin: 5px 0;
+      text-transform: uppercase;
+      color: $text-color;
+    }
+
+    p {
+      font-size: 14px;
+      color: $accent;
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #f9d3b4;
+  font-size: 20px;
+}
+
+// 🔹 Mobile (small screens)
+@media (max-width: $mobile) {
+  .search-bar {
+    width: 95%;
+    margin: 2rem auto 1.5rem;
+    
+    input {
+      height: 45px;
+      font-size: 16px;
+    }
+  }
+
+  .movie-container {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+}
+
+// 🔹 Tablet
+@media (min-width: $mobile) and (max-width: $tablet) {
+  .search-bar {
+    width: 90%;
+  }
+
+  .movie-container {
+    gap: 1.5rem;
+  }
+}
+
+// 🔹 Laptop
+@media (min-width: $tablet) and (max-width: $laptop) {
+  .search-bar {
+    width: 80%;
+  }
+}
+
+// 🔹 Desktop (large screens)
+@media (min-width: $desktop) {
+  .search-bar {
+    width: 60%;
+  }
+
+  .movie-container {
+    gap: 2.5rem;
+  }
+}
